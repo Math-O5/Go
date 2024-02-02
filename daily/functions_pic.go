@@ -1,5 +1,5 @@
 package main
-
+ 
 import "golang.org/x/tour/pic"
 
 func calc_pow() {
