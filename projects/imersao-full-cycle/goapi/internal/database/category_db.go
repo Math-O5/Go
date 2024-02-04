@@ -1,4 +1,4 @@
-package datab
+package database
 
 import (
 	"database/sql"
