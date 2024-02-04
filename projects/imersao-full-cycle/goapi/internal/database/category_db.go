@@ -1,7 +1,8 @@
-package database
+package datab
 
 import (
 	"database/sql"
+	_ "database/sql"
 
 	"github.com/Math-O5/Go/projects/imersao-full-cycle/goapi/internal/entity"
 )

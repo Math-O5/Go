@@ -22,9 +22,10 @@ func (pd *ProductService) GetProducts() ([]*entity.Product, error) {
 	return products, nil
 }
 
-func (pd *ProductService) CreateCategory(name string, description string, price float64, categoryID string, imageURL string) (*entity.Product, error) {
+func (pd *ProductService) CreateProduct(name string, description string, price float64, categoryID string, imageURL string) (*entity.Product, error) {
 	product := entity.NewProduct(name, description, price, categoryID, imageURL)
-
+	print("HERE\n")
+	print(product.Name)
 	_, err := pd.ProductDB.Createproducts(product)
 
 	if err != nil {
@@ -43,4 +44,16 @@ func (pd *ProductService) GetProduct(id string) (*entity.Product, error) {
 
 	return product, nil
 
+}
+
+func (pd *ProductService) GetProductByCategoryID(categoryID string) ([]*entity.Product, error) {
+	products, err := pd.ProductDB.GetProductByCategoryID(categoryID)
+
+	print("AAA\n")
+	print(len(products))
+	if err != nil {
+		return nil, err
+	}
+
+	return products, nil
 }
