@@ -1,0 +1,7 @@
+docker exec -it codepix_kafka_1 bash
+
+$ kafka-topics --list --bootstrap-server=localhost:9092
+
+$ kafka-console-consumer --topic=true --bootstrap-server=localhost:9092
+
+$
