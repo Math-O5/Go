@@ -6,7 +6,7 @@ import (
 
 func NewKafKaProducer() *ckafka.Producer {
 	configMap := &ckafka.ConfigMap{
-		"bootstrap.servers":"kafka:9092",
+		"bootstrap.servers":os.Getenv("kafkaBootstrapServers"),
 	}
 
 	p, err := ckafka.NewProducer(configMap)
@@ -37,7 +37,7 @@ func Publiher(msg string, topic string, producer *ckafka.Producer, deliveryChan 
 func DeliveryReport(deliveryChan chan ckafka.Event) {
 	for e := range deliveryChan {
 		switch ev := e.(type) {
-		case *ckafka.Messafe:
+		case *ckafka.Message:
 			if ev.TopicPartition.Error != nil {
 				fmt.Println("Delivere failed:", ev.TopicPartition)
 			} else {
